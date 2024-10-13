@@ -1,4 +1,6 @@
 // MARK: DOM Selection
+const dogsListDisplay = document.querySelector(".dogs-list-display");
+const dogImgDisplay = document.querySelector(".dogs-img-display");
 
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
@@ -19,14 +21,20 @@ async function getSpecificDog(breed) {
 }
 
 // MARK: Rendering Functions
-function renderDogList(data) {}
+function renderDogList(data) {
+  const documentFragement = document.createDocumentFragment();
+  data.forEach((dog) => {
+    const optionEl = document.createElement("option");
+    optionEl.textContent = dog;
+    documentFragement.appendChild(optionEl);
+  });
+  dogsListDisplay.appendChild(documentFragement);
+}
 
 // This function fires off on inital render
 async function initalRender() {
   const dogList = await getDogList();
-  console.log(dogList);
-  const getFirst = await getSpecificDog(dogList[5]);
-  console.log(getFirst);
+  renderDogList(dogList);
 }
 
 initalRender();
