@@ -2,9 +2,9 @@
 import { capitalize } from "./utils";
 
 // MARK: DOM Selection
+const heading = document.querySelector("h1");
 const dogsListDisplay = document.querySelector(".dogs-list-display");
 const dogImgDisplay = document.querySelector(".dog-img-display");
-console.log(dogImgDisplay);
 
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
@@ -12,19 +12,29 @@ const BASE_URI = `https://dog.ceo/api`;
 // MARK: Fetching Logic
 // This function gets all the dogs from the api
 async function getDogList() {
-  const res = await fetch(`${BASE_URI}/breeds/list/all`);
-  const data = await res.json();
-  return [...Object.keys(data.message)];
+  try {
+    const res = await fetch(`${BASE_URI}/breeds/list/all`);
+    const data = await res.json();
+    return [...Object.keys(data.message)];
+  } catch (error) {
+    console.error("Found an error", error);
+    heading.textContent = "Sorry the API is not responding!";
+  }
 }
 
 // This function gets a dog info on breed
 async function getSpecificDog(breed) {
-  const res = await fetch(`${BASE_URI}/breed/${breed.toLowerCase()}/images`);
-  const data = await res.json();
-  return data.message[0];
+  try {
+    const res = await fetch(`${BASE_URI}/breed/${breed.toLowerCase()}/images`);
+    const data = await res.json();
+    return data.message[0];
+  } catch (err) {
+    console.error("not found");
+  }
 }
 
 // MARK: Rendering Functions
+// Render list of dogs in search
 function renderDogList(data) {
   const documentFragement = document.createDocumentFragment();
   data.forEach((dog) => {
@@ -35,6 +45,7 @@ function renderDogList(data) {
   dogsListDisplay.appendChild(documentFragement);
 }
 
+// Render a specific dog image
 function renderDog(imgSrc, breed) {
   dogImgDisplay.src = imgSrc;
   dogImgDisplay.alt = breed;
