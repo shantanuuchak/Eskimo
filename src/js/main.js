@@ -1,6 +1,10 @@
+// MARK: Imports
+import { capitalize } from "./utils";
+
 // MARK: DOM Selection
 const dogsListDisplay = document.querySelector(".dogs-list-display");
-const dogImgDisplay = document.querySelector(".dogs-img-display");
+const dogImgDisplay = document.querySelector(".dog-img-display");
+console.log(dogImgDisplay);
 
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
@@ -15,9 +19,9 @@ async function getDogList() {
 
 // This function gets a dog info on breed
 async function getSpecificDog(breed) {
-  const res = await fetch(`${BASE_URI}/breed/${breed}/images`);
+  const res = await fetch(`${BASE_URI}/breed/${breed.toLowerCase()}/images`);
   const data = await res.json();
-  return data.message.slice(0, 5);
+  return data.message[0];
 }
 
 // MARK: Rendering Functions
@@ -25,10 +29,14 @@ function renderDogList(data) {
   const documentFragement = document.createDocumentFragment();
   data.forEach((dog) => {
     const optionEl = document.createElement("option");
-    optionEl.textContent = dog;
+    optionEl.textContent = capitalize(dog);
     documentFragement.appendChild(optionEl);
   });
   dogsListDisplay.appendChild(documentFragement);
+}
+
+function renderDog(data) {
+  dogImgDisplay.src = data;
 }
 
 // This function fires off on inital render
@@ -38,3 +46,9 @@ async function initalRender() {
 }
 
 initalRender();
+
+// MARK: Handlers
+dogsListDisplay.addEventListener("change", async (e) => {
+  const dogData = await getSpecificDog(e.target.value);
+  renderDog(dogData);
+});
