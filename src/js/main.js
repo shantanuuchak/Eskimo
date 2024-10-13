@@ -35,8 +35,9 @@ function renderDogList(data) {
   dogsListDisplay.appendChild(documentFragement);
 }
 
-function renderDog(data) {
-  dogImgDisplay.src = data;
+function renderDog(imgSrc, breed) {
+  dogImgDisplay.src = imgSrc;
+  dogImgDisplay.alt = breed;
 }
 
 // This function fires off on inital render
@@ -49,6 +50,7 @@ initalRender();
 
 // MARK: Handlers
 dogsListDisplay.addEventListener("change", async (e) => {
-  const dogData = await getSpecificDog(e.target.value);
-  renderDog(dogData);
+  const currentInput = e.target.value;
+  const dogData = await getSpecificDog(currentInput);
+  renderDog(dogData, currentInput);
 });
