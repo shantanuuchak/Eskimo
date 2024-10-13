@@ -6,7 +6,75 @@
     <title>Eskimo</title>
   </head>
   <body>
-    <h1>Eskimo</h1>
+    <!--
+      MARK: Navbar
+    -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+          <img src="../assets/icon.png" alt="" />
+        </a>
+
+        <a
+          role="button"
+          class="navbar-burger"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a target="_blank" class="navbar-item" href="https://dog.ceo/dog-api/"
+            >DogsAPI</a
+          >
+
+          <a
+            target="_blank"
+            class="navbar-item"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+            >Fetch API</a
+          >
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>GitHub</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- 
+      MARK: Main
+    -->
+    <main
+      class="container is-flex is-justify-conetent-center is-align-items-center is-full"
+    >
+      <div class="field">
+        <label class="label">Select Dog</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option>Select dropdown</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 
+      MARK: Footer
+    -->
     <script src="./js/main.js" type="module"></script>
   </body>
 </html>
