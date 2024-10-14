@@ -1,23 +1,41 @@
-* {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: black;
+// Resets
+*,
+*::before,
+*::after {
+  font-family: "Afacad Flux";
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 header {
-  background: white;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid black;
 }
 
 body {
-  background: url(https://i.imgur.com/r0VFFep.png);
   min-height: 100vh;
+  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+}
+
+main {
+  padding: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// Dropdown
+label {
+  font-size: 3rem;
+}
+
+select {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+// Image
+img {
+  border-radius: 0.5rem;
 }
