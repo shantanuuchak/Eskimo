@@ -28,8 +28,8 @@ async function getSpecificDog(breed) {
     const res = await fetch(`${BASE_URI}/breed/${breed.toLowerCase()}/images`);
     const data = await res.json();
     return data.message[0];
-  } catch (err) {
-    console.error("not found");
+  } catch (error) {
+    console.error("Error occured", error);
   }
 }
 
@@ -40,6 +40,7 @@ function renderDogList(data) {
   data.forEach((dog) => {
     const optionEl = document.createElement("option");
     optionEl.textContent = capitalize(dog);
+    optionEl.value = dog;
     documentFragement.appendChild(optionEl);
   });
   dogsListDisplay.appendChild(documentFragement);
@@ -61,6 +62,11 @@ initalRender();
 
 // MARK: Handlers
 dogsListDisplay.addEventListener("change", async (e) => {
+  // Show loading state
+  dogImgDisplay.alt = "Loading...";
+  dogImgDisplay.src = "loading.gif";
+
+  // Fetch current dog and render on image
   const currentInput = e.target.value;
   const dogData = await getSpecificDog(currentInput);
   renderDog(dogData, currentInput);
