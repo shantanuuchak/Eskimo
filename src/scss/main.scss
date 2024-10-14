@@ -35,6 +35,15 @@ select {
   font-size: 1.2rem;
 }
 
+button {
+  font-size: 1rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
 // Image
 img {
   border-radius: 0.5rem;
