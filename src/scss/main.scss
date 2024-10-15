@@ -8,43 +8,6 @@
   box-sizing: border-box;
 }
 
-header {
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid black;
-}
-
-body {
-  min-height: 100vh;
-  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
-}
-
-main {
-  padding: 1rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-// Dropdown
-label {
-  font-size: 3rem;
-}
-
-select {
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-}
-
-button {
-  font-size: 1rem;
-  background-color: white;
-  border: 1px solid black;
-  padding: 0.2rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-// Image
 img {
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
 }
