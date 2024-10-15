@@ -68,7 +68,7 @@ initalRender();
 
 // MARK: Handlers
 dogsListDisplay.addEventListener("change", async (e) => {
-  renderDog(["/static/loading.gif", "Loading..."]);
+  renderDog(["/loading.gif", "Loading..."]);
 
   // Fetch current dog and render on image
   const currentInput = e.target.value;
