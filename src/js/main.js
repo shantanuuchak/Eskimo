@@ -1,6 +1,6 @@
 // MARK: Imports
-import { capitalize } from "./utils";
 import CarouselSingle from "./components/CarouselSingle";
+import Option from "./components/Option";
 
 // MARK: DOM Selection
 const heading = document.querySelector("h1");
@@ -10,7 +10,7 @@ const carouselContainer = document.querySelector(".carousel-inner");
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
 
-// MARK: Fetching Logic
+// MARK: Fetch
 // This function gets all the dogs from the api
 async function getDogList() {
   try {
@@ -34,15 +34,12 @@ async function getSpecificDog(breed) {
   }
 }
 
-// MARK: Rendering Functions
+// MARK: Render
 // Render list of dogs in search
 function renderDogList(data) {
   const documentFragement = document.createDocumentFragment();
   data.forEach((dog) => {
-    const optionEl = document.createElement("option");
-    optionEl.textContent = capitalize(dog);
-    optionEl.value = dog;
-    documentFragement.appendChild(optionEl);
+    documentFragement.appendChild(Option(dog));
   });
   dogsListDisplay.appendChild(documentFragement);
 }
