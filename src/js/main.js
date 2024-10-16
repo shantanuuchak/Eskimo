@@ -13,14 +13,23 @@ const BASE_URI = `https://dog.ceo/api`;
 // MARK: Fetch
 // This function gets all the dogs from the api
 async function getDogList() {
-  try {
-    const res = await fetch(`${BASE_URI}/breeds/list/all`);
-    const data = await res.json();
-    return [...Object.keys(data.message)];
-  } catch (error) {
-    console.error("Found an error", error);
-    heading.textContent = "Sorry the API is not responding!";
+  let breeds = JSON.parse(localStorage.getItem("breeds"));
+
+  console.log("1 lakh", breeds);
+
+  if (!breeds) {
+    try {
+      const res = await fetch(`${BASE_URI}/breeds/list/all`);
+      const data = await res.json();
+      breeds = [...Object.keys(data.message)];
+      localStorage.setItem("breeds", JSON.stringify(breeds));
+    } catch (error) {
+      console.error("Found an error", error);
+      heading.textContent = "Sorry the API is not responding!";
+    }
   }
+
+  return breeds;
 }
 
 // This function gets a dog info on breed
