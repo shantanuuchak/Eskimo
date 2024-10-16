@@ -25,46 +25,50 @@
     <link rel="stylesheet" href="./scss/main.scss" />
   </head>
   <body>
-    <main class="container mt-5">
-      <h1>Eskimo Dog Search</h1>
+    <div class="iphone-frame">
+      <div class="content">
+        <!-- Your website content goes here -->
+        <main class="container">
+          <h1>Eskimo Dog Search</h1>
 
-      <p>
-        Render real dogs from the
-        <a
-          href="#"
-          class="btn btn-outline-warning"
-          href="https://dog.ceo/dog-api/"
-          >DogsApi</a
-        >
-      </p>
+          <p>
+            Render real dogs from the
+            <a
+              href="#"
+              class="btn btn-outline-warning"
+              href="https://dog.ceo/dog-api/"
+              >DogsApi</a
+            >
+          </p>
 
-      <!-- 
-        MARK: Search
-      -->
-      <div class="input-group">
-        <select
-          class="form-select dogs-list-display"
-          id="inputGroupSelect04"
-          aria-label="Example select with button addon"
-        >
-          <option value="" disabled>Select Dog</option>
-        </select>
+          <!-- 
+              MARK: Search
+            -->
+          <div class="input-group">
+            <select
+              class="form-select dogs-list-display"
+              id="inputGroupSelect04"
+              aria-label="Example select with button addon"
+            >
+              <option value="" disabled>Select Dog</option>
+            </select>
+          </div>
+
+          <br />
+
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <!-- Carousel Container -->
+            <div class="carousel-inner">
+              <!-- Single Carousel -->
+            </div>
+          </div>
+        </main>
       </div>
-
-      <br />
-
-      <div
-        id="carouselExampleSlidesOnly"
-        class="carousel slide"
-        data-bs-ride="carousel"
-        style="width: 50%"
-      >
-        <!-- Carousel Container -->
-        <div class="carousel-inner">
-          <!-- Single Carousel -->
-        </div>
-      </div>
-    </main>
+    </div>
 
     <!-- Scripts -->
     <script

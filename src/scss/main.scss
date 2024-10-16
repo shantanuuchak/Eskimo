@@ -13,6 +13,42 @@ body {
   min-height: 100vh;
 }
 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Light background */
+  margin: 0;
+}
+
+.iphone-frame {
+  position: relative;
+  width: 375px; /* Width of the iPhone */
+  height: 667px; /* Height of the iPhone */
+  background-color: white;
+  border-radius: 40px; /* Rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px; /* Top notch */
+    border-radius: 40px 40px 0 0;
+  }
+
+  .content {
+    padding: 20px;
+    overflow-y: auto; /* Enable scrolling if content is too long */
+    height: calc(100% - 20px); /* Adjust height to fit the notch */
+  }
+}
+
 img {
   border-radius: 0.3rem;
 }
