@@ -9,7 +9,6 @@
 }
 
 body {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,8 +46,4 @@ body {
     overflow-y: auto; /* Enable scrolling if content is too long */
     height: calc(100% - 20px); /* Adjust height to fit the notch */
   }
-}
-
-img {
-  border-radius: 0.3rem;
 }
