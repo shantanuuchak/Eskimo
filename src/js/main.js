@@ -9,6 +9,7 @@ const carouselContainer = document.querySelector(".carousel-inner");
 
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
+let currentDog = "eskimo";
 
 // === MARK: Fetch
 // Get dog breeds from api and cache in localstorage
@@ -49,7 +50,7 @@ async function renderDogOption() {
   const documentFragement = document.createDocumentFragment();
 
   dogsList.forEach((dog) => {
-    documentFragement.appendChild(Option(dog));
+    documentFragement.appendChild(Option(dog, dog === currentDog));
   });
 
   dogsListDisplay.appendChild(documentFragement);
@@ -79,5 +80,5 @@ dogsListDisplay.addEventListener("change", async (e) => {
 // Inital Rendering
 document.addEventListener("DOMContentLoaded", () => {
   renderDogOption();
-  renderDogCarousel("boxer");
+  renderDogCarousel(currentDog); // load "Eskimo"
 });
