@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eskimo</title>
+    <title>Eskimo &mdash; Render Dogs</title>
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,49 +24,40 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./scss/main.scss" />
   </head>
-  <body class="px-2 p-sm-0">
+  <body class="px-2">
+    <!-- Phone frame -->
     <div class="iphone-frame">
-      <div class="content">
-        <!-- Your website content goes here -->
-        <main class="container">
-          <h1 class="display-5">Eskimo &mdash; The Dogs Project</h1>
+      <main class="content">
+        <!-- Main content goes here -->
+        <h1 class="fs-1">Eskimo &mdash; The Dogs Project</h1>
+        <p>
+          Render real dogs from the
+          <a href="https://dog.ceo/dog-api/" target="_blank">DogsApi</a>
+        </p>
 
-          <p>
-            Render real dogs from the
-            <a href="https://dog.ceo/dog-api/" target="_blank">DogsApi</a>
-          </p>
+        <!-- Select -->
+        <div class="form-floating mb-4">
+          <select
+            class="form-select"
+            id="inputGroupSelect04"
+            aria-label="Dog breeds option"
+          ></select>
+          <label for="inputGroupSelect04" class="">Select Breed</label>
+        </div>
 
-          <!-- 
-              MARK: Search
-            -->
-          <div class="input-group">
-            <select
-              class="form-select dogs-list-display"
-              id="inputGroupSelect04"
-              aria-label="Example select with button addon"
-            >
-              <option value="" disabled>Select Dog</option>
-            </select>
+        <div
+          id="carouselExampleSlidesOnly"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <!-- Carousel Container -->
+          <div class="carousel-inner">
+            <!-- Single Carousel -->
           </div>
+        </div>
 
-          <br />
-
-          <div
-            id="carouselExampleSlidesOnly"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <!-- Carousel Container -->
-            <div class="carousel-inner">
-              <!-- Single Carousel -->
-            </div>
-          </div>
-
-          <footer>
-            <p>Wait for image to slide</p>
-          </footer>
-        </main>
-      </div>
+        <p class="lead">Wait for image to slide</p>
+      </main>
     </div>
 
     <!-- Scripts -->
@@ -75,7 +66,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-
     <script src="./js/main.js" type="module"></script>
   </body>
 </html>

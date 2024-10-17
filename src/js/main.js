@@ -1,21 +1,19 @@
-// MARK: Imports
-import CarouselSingle from "./components/CarouselSingle";
+// Imports
 import Option from "./components/Option";
+import CarouselSingle from "./components/CarouselSingle";
 
-// MARK: DOM Selection
+// DOM Selection
 const heading = document.querySelector("h1");
-const dogsListDisplay = document.querySelector(".dogs-list-display");
+const dogsListDisplay = document.querySelector("select");
 const carouselContainer = document.querySelector(".carousel-inner");
 
 // Variables
 const BASE_URI = `https://dog.ceo/api`;
 
-// MARK: Fetch
-// This function gets all the dogs from the api
+// === MARK: Fetch
+// Get dog breeds from api and cache in localstorage
 async function getDogList() {
   let breeds = JSON.parse(localStorage.getItem("breeds"));
-
-  console.log("1 lakh", breeds);
 
   if (!breeds) {
     try {
@@ -32,34 +30,39 @@ async function getDogList() {
   return breeds;
 }
 
-// This function gets a dog info on breed
-async function getSpecificDog(breed) {
+// Get images list for a particular dog
+async function getBreedImages(breed) {
   try {
-    const res = await fetch(`${BASE_URI}/breed/${breed.toLowerCase()}/images`);
+    const res = await fetch(`${BASE_URI}/breed/${breed}/images`);
     const data = await res.json();
-    return data.message.slice(0, 5);
+    return data.message.slice(0, 10);
   } catch (error) {
     console.error("Error occured", error);
   }
 }
 
-// MARK: Render
-// Render list of dogs in search
-function renderDogList(data) {
+// === MARK: Render
+// Render list of dogs as search options
+async function renderDogOption() {
+  const dogsList = await getDogList();
+
   const documentFragement = document.createDocumentFragment();
-  data.forEach((dog) => {
+
+  dogsList.forEach((dog) => {
     documentFragement.appendChild(Option(dog));
   });
+
   dogsListDisplay.appendChild(documentFragement);
 }
 
-// Render a specific dog image
-function renderDog(imagesList, breed) {
-  carouselContainer.innerHTML = "";
+// Render image carousels
+async function renderDogCarousel(breed) {
+  const images = await getBreedImages(breed);
 
+  carouselContainer.innerHTML = "";
   const documentFragment = document.createDocumentFragment();
 
-  imagesList.forEach((url, idx) => {
+  images.forEach((url, idx) => {
     const singleCarousel = CarouselSingle(url, breed, idx === 0);
     documentFragment.appendChild(singleCarousel);
   });
@@ -67,21 +70,14 @@ function renderDog(imagesList, breed) {
   carouselContainer.appendChild(documentFragment);
 }
 
-// This function fires off on inital render
-async function initalRender() {
-  const dogList = await getDogList();
-  renderDogList(dogList);
-}
-
-initalRender();
-
-// MARK: Handlers
+// === MARK: Handlers
 dogsListDisplay.addEventListener("change", async (e) => {
-  renderDog(["/loading.gif", "Loading..."]);
+  const currInput = e.target.value;
+  renderDogCarousel(currInput);
+});
 
-  // Fetch current dog and render on image
-  const currentInput = e.target.value;
-  const dogData = await getSpecificDog(currentInput);
-  console.log(dogData);
-  renderDog(dogData, currentInput);
+// Inital Rendering
+document.addEventListener("DOMContentLoaded", () => {
+  renderDogOption();
+  renderDogCarousel("boxer");
 });
