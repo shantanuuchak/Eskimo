@@ -1,18 +1,14 @@
 {
   "name": "eskimo",
-  "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.12.0",
-    "parcel": "^2.12.0",
-    "parcel-plugin-static-files-copy": "^1.2.4",
-    "parcel-reporter-static-files-copy": "^1.5.3"
+    "vite": "^5.4.9"
   }
 }

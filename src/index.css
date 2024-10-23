@@ -1,0 +1,9 @@
+body {
+  font-family: "Afacad Flux";
+}
+
+@media screen and (min-width: 768px) {
+  .carousel-item img {
+    width: 60% !important;
+  }
+}
